@@ -1,0 +1,95 @@
+HomePage:
+  items:
+    - item_name: 'backpack'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Sauce Labs Backpack']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-sauce-labs-backpack']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-sauce-labs-backpack']"
+    - item_name: 'bike_light'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Sauce Labs Bike Light']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-sauce-labs-bike-light']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-sauce-labs-bike-light']"
+    - item_name: 't_shirt'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Sauce Labs Bolt T-Shirt']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-sauce-labs-bolt-t-shirt']"
+    - item_name: 'jacket'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Sauce Labs Fleece Jacket']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-sauce-labs-fleece-jacket']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-sauce-labs-fleece-jacket']"
+    - item_name: 'onesie'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Sauce Labs Onesie']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-sauce-labs-onesie']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-sauce-labs-onesie']"
+    - item_name: 'red_t_shirt'
+      item_info:
+        type: xpath
+        value: "//div[normalize-space()='Test.allTheThings() T-Shirt (Red)']"
+      add_to_cart:
+        type: xpath
+        value: "//button[@id='add-to-cart-test.allthethings()-t-shirt-(red)']"
+      remove_from_cart:
+        type: xpath
+        value: "//button[@id='remove-test.allthethings()-t-shirt-(red)']"
+  cart:
+    go_to_cart:
+      type: xpath
+      value: "//a[@class='shopping_cart_link']"
+    items_in_cart:
+      type: xpath
+      value: "//span[@class='shopping_cart_badge'][contains(text(),'3')]"
+  sort_list:
+    a_z:
+      type: xpath
+      value: "//select[@class='product_sort_container']/option[text()='Name (A to Z)']"
+    z_a:
+      type: xpath
+      value: "//select[@class='product_sort_container']/option[text()='Name (Z to A)']"
+    low_to_high:
+      type: xpath
+      value: "//select[@class='product_sort_container']/option[text()='Price (low to high)']"
+    high_to_low:
+      type: xpath
+      value: "//select[@class='product_sort_container']/option[text()='Price (high to low)']"
+  menu_list:
+    options:
+      all_items:
+        type: xpath
+        value: "//div[normalize-space()='inventory-sidebar-link']"
+      logout:
+        type: xpath
+        value: "//div[normalize-space()='logout-sidebar-link']"
+      reset_app_state:
+        type: xpath
+        value: "//div[normalize-space()='reset-sidebar-link']"
+
+

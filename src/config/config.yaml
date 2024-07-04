@@ -1,0 +1,12 @@
+sites:
+  saucedemo:
+    base_url: "https://www.saucedemo.com"
+    password: "secret_sauce"
+    usernames:
+      - "standard_user"
+      - "locked_out_user"
+      - "problem_user"
+      - "performance_glitch_user"
+      - "error_user"
+      - "visual_user"
+browser: "chrome"

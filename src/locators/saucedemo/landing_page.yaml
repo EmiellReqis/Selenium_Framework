@@ -1,0 +1,4 @@
+LandingPage:
+  home_button:
+    type: xpath
+    value: ''

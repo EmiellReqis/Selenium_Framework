@@ -1,0 +1,13 @@
+LoginPage:
+  username_field:
+    type: xpath
+    value: "//input[@id='user-name']"
+  password_field:
+    type: xpath
+    value: "//input[@id='password']"
+  login_button:
+    type: xpath
+    value: "//input[@id='login-button']"
+  logged_in_element:
+    type: xpath
+    value: "//a[@class='shopping_cart_link']"
