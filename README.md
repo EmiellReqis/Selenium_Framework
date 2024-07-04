@@ -2,19 +2,19 @@
 Description TODO.
 
 ## **Table of Contents**
-Getting Started
-Prerequisites
-Installing Dependencies
-Setting Up ChromeDriver
-Usage
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installing Dependencies](#installing-dependencies)
+    - [Setting Up ChromeDriver](#setting-up-chromedriver)
+  - [Running Tests](#running-tests)
 
 
 ## **Getting Started**
-**Prerequisites**
+### **Prerequisites**
 - Python (version X.X)
 - Pip (Python package installer)
   
-**Installing Dependencies**
+### **Installing Dependencies**
 1. Clone the repository:
   ```
   git clone git@github.com:EmiellReqis/Selenium_Framework.git
@@ -26,7 +26,7 @@ Usage
   ```
   Note: Ensure you have Python installed. If not, download it from python.org.
 
-**Setting Up ChromeDriver**
+### **Setting Up ChromeDriver**
 1. Download ChromeDriver:
    - Download the appropriate version of ChromeDriver from [ChromeDriver download page](https://googlechromelabs.github.io/chrome-for-testing/).
      
@@ -34,23 +34,11 @@ Usage
   - Windows:
     1. Download ChromeDriver and extract it to a directory (e.g., D:\usr\local\bin).
     2. Add D:\usr\local\bin to the system PATH:
-      - Open Start Search, type in 'env', and select 'Edit the system environment variables'.
-      - Click the Environment Variables... button.
-      - Under System Variables, find the Path variable and click Edit....
-      - Add D:\usr\local\bin to the list of paths.
-        
-3. Specify ChromeDriver Path in Python Script (Alternative):
-
-  If you prefer not to add ChromeDriver to the system PATH, you can specify the path directly in your Python script:
-
-```
-from selenium import webdriver
-
-# Specify the path to ChromeDriver explicitly
-chrome_driver_path = r'D:\usr\local\bin\chromedriver'  # Replace with actual path
-driver = webdriver.Chrome(executable_path=chrome_driver_path)
-```
-
+        - Open Start Search, type in 'env', and select 'Edit the system environment variables'.
+        - Click the Environment Variables... button.
+        - Under System Variables, find the Path variable and click Edit....
+        - Add D:\usr\local\bin to the list of paths.  
+       
 ## **Running Tests**
 To run the tests for this project, follow these steps:
 
