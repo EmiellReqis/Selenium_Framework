@@ -11,13 +11,13 @@ Description TODO.
 
 ## **Getting Started**
 ### **Prerequisites**
-- Python (version X.X)
+- Python (version 3.11)
 - Pip (Python package installer)
   
 ### **Installing Dependencies**
 1. Clone the repository:
   ```
-  git clone git@github.com:EmiellReqis/Selenium_Framework.git
+  git clone https://github.com/EmiellReqis/Selenium_Framework.git
   cd path_to_project/Selenium_Framework
   ```
 2. Install required Python packages:
