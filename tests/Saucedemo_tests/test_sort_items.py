@@ -38,5 +38,5 @@ class TestSortItems:
         self.home_page.sort_order_choose(sort_option)
         sort_text = self.home_page.sort_order_text(sort_option)
         self.logger.info(f"Sort order text: {sort_text}")
-        assert sort_text.lower() == expected_text, f"Expected 'Name (Z to A)' but got '{sort_text}'"
+        assert sort_text.lower() == expected_text, f"Expected {expected_text} but got '{sort_text}'"
         self.logger.info("Test passed")
