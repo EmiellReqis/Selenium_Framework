@@ -1,6 +1,5 @@
 from src.pages.base_page import BasePage
 from src.utils.locator_loader import load_locators
-from src.utils.logger import get_logger
 from selenium.webdriver.common.by import By
 
 
@@ -22,7 +21,7 @@ class HomePage(BasePage):
     def remove_item_from_cart(self, item_name):
         item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
         self.click(item['remove_from_cart'])
-        self.logger.info(f"{item_name} removed from cart")
+        self.logger.info(f"{item_name} added to cart successfully")
 
     def is_item_in_cart(self, count):
         cart_count_locator = f"//span[@class='shopping_cart_badge'][contains(text(),'{count}')]"
@@ -38,3 +37,11 @@ class HomePage(BasePage):
             return False
         except:
             return True
+
+    def sort_order_choose(self, sort_option):
+        self.click(self.locators['sort_list'][sort_option])
+        self.logger.info(f"Items sorted: {sort_option}")
+
+    def sort_order_text(self, sort_option):
+        sort_order_text = self.get_element_text(self.locators['sort_list'][sort_option])
+        return sort_order_text
