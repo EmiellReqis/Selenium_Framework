@@ -16,12 +16,12 @@ class HomePage(BasePage):
     def add_item_to_cart(self, item_name):
         item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
         self.click(item['add_to_cart'])
-        self.logger.info(f"{item_name} added to cart")
+        self.logger.info(f"{item_name} added to cart successfully")
 
     def remove_item_from_cart(self, item_name):
         item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
         self.click(item['remove_from_cart'])
-        self.logger.info(f"{item_name} added to cart successfully")
+        self.logger.info(f"{item_name} removed from cart successfully")
 
     def is_item_in_cart(self, count):
         cart_count_locator = f"//span[@class='shopping_cart_badge'][contains(text(),'{count}')]"

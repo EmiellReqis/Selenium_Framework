@@ -61,7 +61,6 @@ class TestCart:
         for count, item in enumerate(items, start=1):
             self.home_page.add_item_to_cart(item)
             assert self.home_page.is_item_in_cart(count), f"{item} was not added to cart"
-            self.logger.info(f"{item} added to cart successfully")
 
         # Remove items from cart
         for index, item in enumerate(items):
@@ -72,5 +71,4 @@ class TestCart:
             else:
                 assert self.home_page.is_cart_empty(), "Cart is not empty after removing all items"
 
-        self.logger.info(f"All items {items} removed from cart successfully")
         self.logger.info("Test test_remove_from_cart passed")
