@@ -17,7 +17,6 @@ class TestLogin:
 
         self.landing_page = LandingPage(driver, config['sites'][self.site_name]['base_url'], self.site_name, self.logger)
         self.login_page = LoginPage(driver, self.site_name, self.logger)
-        self.base_page = BasePage(driver, self.login_page.locators, self.logger)
 
         self.landing_page.open()
 
