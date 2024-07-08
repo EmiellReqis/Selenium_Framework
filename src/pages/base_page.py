@@ -32,6 +32,13 @@ class BasePage:
         self.logger.info(f"Typing text '{text}' into element by {locator['type']} with value {locator['value']}")
         self.wait_for_element(locator).send_keys(text)
 
+    # def get_element_text(self, locator):
+    #     self.wait.until(EC.visibility_of_element_located((By.XPATH, locator['value'])))
+    #     return self.driver.find_element(By.XPATH, locator['value']).text
+
     def get_element_text(self, locator):
-        self.wait.until(EC.visibility_of_element_located((By.XPATH, locator['value'])))
-        return self.driver.find_element(By.XPATH, locator['value']).text
+        self.logger.info(f"Getting text of element by {locator['type']} with value {locator['value']}")
+        self.wait_for_element(locator)
+        element_text = self.driver.find_element(locator['type'], locator['value']).text
+        self.logger.info(f"Text of element: {element_text}")
+        return element_text

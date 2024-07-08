@@ -11,3 +11,6 @@ LoginPage:
   logged_in_element:
     type: xpath
     value: "//a[@class='shopping_cart_link']"
+  error_note:
+    type: xpath
+    value: "//h3[@data-test='error']"

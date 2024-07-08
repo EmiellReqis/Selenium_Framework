@@ -14,3 +14,6 @@ class LoginPage(BasePage):
 
     def is_logged_in(self):
         return self.wait_for_element(self.locators['logged_in_element']).is_displayed()
+
+    def login_error(self):
+        return self.get_element_text(self.locators["error_note"])
