@@ -3,6 +3,13 @@ from selenium.webdriver.chrome.options import Options
 
 
 def get_driver(browser="chrome"):
+    """
+    Get a WebDriver instance for the specified browser.
+
+    :param browser: Name of the browser ("chrome" or "firefox")
+    :return: WebDriver instance
+    :raises ValueError: If an unsupported browser is specified
+    """
     if browser == "chrome":
         options = Options()
         options.add_argument('--ignore-certificate-errors')

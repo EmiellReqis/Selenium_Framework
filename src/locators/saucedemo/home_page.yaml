@@ -80,16 +80,13 @@ HomePage:
     high_to_low:
       type: xpath
       value: "//select[@class='product_sort_container']/option[text()='Price (high to low)']"
-  menu_list:
-    options:
-      all_items:
-        type: xpath
-        value: "//div[normalize-space()='inventory-sidebar-link']"
-      logout:
-        type: xpath
-        value: "//div[normalize-space()='logout-sidebar-link']"
-      reset_app_state:
-        type: xpath
-        value: "//div[normalize-space()='reset-sidebar-link']"
+  menu_logout:
+    menu_button:
+      type: xpath
+      value: "//button[@id='react-burger-menu-btn']"
+    logout:
+      type: xpath
+      value: "//a[@id='logout_sidebar_link']"
+
 
 

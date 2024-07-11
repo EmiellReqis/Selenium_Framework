@@ -1,7 +1,7 @@
 import pytest
 from src.pages.landing_page import LandingPage
 from src.pages.login_page import LoginPage
-from src.pages.base_page import BasePage
+from src.pages.home_page import HomePage
 from src.utils.config_loader import load_config
 
 # Load configuration
@@ -17,6 +17,7 @@ class TestLogin:
 
         self.landing_page = LandingPage(driver, config['sites'][self.site_name]['base_url'], self.site_name, self.logger)
         self.login_page = LoginPage(driver, self.site_name, self.logger)
+        self.home_page = HomePage(driver, self.site_name, self.logger)
 
         self.landing_page.open()
 
@@ -27,11 +28,12 @@ class TestLogin:
         'error_user',
         'visual_user'
     ])
-    def test_valid_login(self, username, logger):
+    def test_valid_login_and_logout(self, username, logger):
         self.logger.info("Starting test: test_valid_login")
         self.login_page.login(username, config["sites"]["saucedemo"]["password"])
         assert self.login_page.is_logged_in()
         self.logger.info(f"Logged in as: {username}")
+        self.home_page.logout()
         self.logger.info("Test test_valid_login passed")
 
     @pytest.mark.parametrize("username, password, message", [

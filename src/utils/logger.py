@@ -4,6 +4,12 @@ from datetime import datetime
 
 
 def get_logger(test_suite_name):
+    """
+    Set up and get a logger for the specified test suite.
+
+    :param test_suite_name: Name of the test suite
+    :return: Logger instance
+    """
     # Get the current date and time
     current_date = datetime.now().strftime("%Y-%m-%d")
     current_time = datetime.now().strftime("%H-%M-%S")
