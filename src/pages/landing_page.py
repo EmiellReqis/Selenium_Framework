@@ -1,9 +1,10 @@
+from selenium.webdriver.remote.webdriver import WebDriver
 from src.pages.base_page import BasePage
 from src.utils.locator_loader import load_locators
 
 
 class LandingPage(BasePage):
-    def __init__(self, driver, base_url, site_name, logger):
+    def __init__(self, driver: WebDriver, base_url: str, site_name: str, logger):
         """
         Initialize the LandingPage with a driver, base URL, site name, and logger.
 

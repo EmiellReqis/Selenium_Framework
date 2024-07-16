@@ -2,8 +2,20 @@ import logging
 import os
 from datetime import datetime
 
+# Define a custom log level for performance
+PERFORMANCE = 25
+logging.addLevelName(PERFORMANCE, "PERFORMANCE")
 
-def get_logger(test_suite_name):
+
+def performance(self, message, *args, **kwargs):
+    if self.isEnabledFor(PERFORMANCE):
+        self._log(PERFORMANCE, message, args, **kwargs)
+
+
+logging.Logger.performance = performance
+
+
+def get_logger(test_suite_name: str) -> logging.Logger:
     """
     Set up and get a logger for the specified test suite.
 
@@ -30,6 +42,10 @@ def get_logger(test_suite_name):
     # Set up the logger
     logger = logging.getLogger(test_suite_name)
     logger.setLevel(logging.INFO)
+
+    # Clear existing handlers
+    if logger.hasHandlers():
+        logger.handlers.clear()
 
     # Create a file handler for writing log messages to a file
     file_handler = logging.FileHandler(log_file)

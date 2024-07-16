@@ -1,0 +1,32 @@
+CartPage:
+  continue_shopping_button:
+    type: xpath
+    value: "//button[@id='continue-shopping']"
+  back_to_home_button:
+    type: xpath
+    value: "//button[@id='back-to-products']"
+  checkout:
+    checkout_first_name:
+      type: xpath
+      value: "//input[@id='first-name']"
+    checkout_last_name:
+      type: xpath
+      value: "//input[@id='last-name']"
+    checkout_zip_code:
+      type: xpath
+      value: "//input[@id='postal-code']"
+    checkout_button:
+      type: xpath
+      value: "//button[@id='checkout']"
+    checkout_title:
+      type: xpath
+      value: "//span[@class='title']"
+    checkout_continue:
+      type: xpath
+      value: "//input[@id='continue']"
+    checkout_finish:
+      type: xpath
+      value: "//button[@id='finish']"
+  error_note:
+    type: xpath
+    value: "//div[@class='error-message-container error']"
