@@ -1,6 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from src.pages.base_page import BasePage
-from src.utils.locator_loader import load_locators
 
 
 class LoginPage(BasePage):
@@ -12,8 +11,7 @@ class LoginPage(BasePage):
         :param site_name: Name of the site
         :param logger: Logger instance
         """
-        locators = load_locators(site_name, 'login_page')['LoginPage']
-        super().__init__(driver, locators, logger)
+        super().__init__(driver, site_name, 'login_page', logger)
 
     def login(self, username: str, password: str):
         """
@@ -22,9 +20,9 @@ class LoginPage(BasePage):
         :param username: Username for login
         :param password: Password for login
         """
-        self.type(self.locators['username_field'], username)
-        self.type(self.locators['password_field'], password)
-        self.click(self.locators['login_button'])
+        self.type(self.get_locator('username_field'), username)
+        self.type(self.get_locator('password_field'), password)
+        self.click(self.get_locator('login_button'))
 
     def is_logged_in(self) -> bool:
         """
@@ -32,4 +30,4 @@ class LoginPage(BasePage):
 
         :return: True if logged in, False otherwise
         """
-        return self.wait_for_element(self.locators['logged_in_element']).is_displayed()
+        return self.wait_for_element(self.get_locator('logged_in_element')).is_displayed()

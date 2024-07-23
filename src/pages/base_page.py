@@ -3,23 +3,44 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
+from src.utils.locator_loader import load_locators
 from typing import Dict, Any
 
 
 class BasePage:
-    def __init__(self, driver: WebDriver, locators: Dict[str, Any], logger, timeout: int = 10):
+    def __init__(self, driver: WebDriver, site_name: str, page_name: str, logger, timeout: int = 10):
         """
         Initialize the BasePage with a driver, locators, and logger.
 
         :param driver: WebDriver instance
-        :param locators: Dictionary of locators
+        :param site_name: Name of the site
+        :param page_name: Name of the page
         :param logger: Logger instance
         :param timeout: Default timeout for waiting for elements
         """
         self.driver = driver
-        self.locators = locators
+        self.site_name = site_name
+        self.page_name = page_name
         self.logger = logger
+        self.locators = load_locators(site_name, page_name)[self.__class__.__name__]
         self.wait = WebDriverWait(driver, timeout)
+        self.logger.info(f"Locators loaded for page: {page_name}")
+
+    def get_locator(self, *locator_keys: str) -> Dict[str, str]:
+        """
+        Retrieve a nested locator from the locators dictionary using the given keys.
+
+        :param locator_keys: Keys to traverse the locators dictionary
+        :return: Locator dictionary with 'type' and 'value'
+        """
+        locator = self.locators
+        for key in locator_keys:
+            if isinstance(locator, list):
+                locator = next(item for item in locator if item.get('item_name') == key)
+            else:
+                locator = locator[key]
+        self.logger.info(f"Locator retrieved for keys: {locator_keys} -> {locator}")
+        return locator
 
     def wait_for_element(self, locator: Dict[str, str], timeout: int = 10) -> WebElement:
         """

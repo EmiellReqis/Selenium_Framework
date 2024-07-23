@@ -93,6 +93,9 @@ HomePage:
   back_to_home_page_button:
     type: xpath
     value: "//button[@id='back-to-products']"
-
-
-
+  item_price:
+    type: xpath
+    value: "//div[@class='inventory_details_price']"
+  about_item_page:
+    type: xpath
+    value: "//div[@class='inventory_details_name large_size']"

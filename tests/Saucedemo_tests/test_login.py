@@ -11,18 +11,22 @@ config = load_config()
 
 
 class TestLogin:
+    test_number = 1
+
     @pytest.fixture(autouse=True)
     def setup(self, driver, logger):
         self.driver = driver
         self.logger = logger
         self.site_name = 'saucedemo'
+        self.performance_thresholds = performance_thresholds  # Performance thresholds for actions
 
         self.landing_page = LandingPage(driver, config['sites'][self.site_name]['base_url'], self.site_name, self.logger)
         self.login_page = LoginPage(driver, self.site_name, self.logger)
-        self.home_page = HomePage(driver, self.site_name, self.logger)
-        self.performance_thresholds = performance_thresholds  # Performance thresholds for actions
+        self.home_page = HomePage(driver, config['sites'][self.site_name]['base_url'], self.site_name, self.logger)
 
+        self.logger.info('Start test setup')
         self.landing_page.open()
+        self.logger.info("Initial setup completed")
 
     @pytest.mark.parametrize("username", [
         'standard_user',

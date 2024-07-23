@@ -1,10 +1,9 @@
 from src.pages.base_page import BasePage
-from src.utils.locator_loader import load_locators
 from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class HomePage(BasePage):
-    def __init__(self, driver: WebDriver, site_name: str, logger):
+    def __init__(self, driver: WebDriver, base_url: str, site_name: str, logger):
         """
         Initialize the HomePage with a driver, site name, and logger.
 
@@ -12,9 +11,8 @@ class HomePage(BasePage):
         :param site_name: Name of the site
         :param logger: Logger instance
         """
-        locators = load_locators(site_name, 'home_page')['HomePage']
-        # self.logger = logger
-        super().__init__(driver, locators, logger)
+        super().__init__(driver, site_name, 'home_page', logger)
+        self.base_url = base_url
 
     def about_item(self, item_name: str):
         """
@@ -22,8 +20,7 @@ class HomePage(BasePage):
 
         :param item_name: Name of the item
         """
-        item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
-        self.click(item['item_info'])
+        self.click(self.get_locator('items', item_name, 'item_info'))
 
     def add_item_to_cart(self, item_name: str):
         """
@@ -31,8 +28,7 @@ class HomePage(BasePage):
 
         :param item_name: Name of the item
         """
-        item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
-        self.click(item['add_to_cart'])
+        self.click(self.get_locator('items', item_name, 'add_to_cart'))
         self.logger.info(f"{item_name} added to cart successfully")
 
     def remove_item_from_cart(self, item_name: str):
@@ -41,8 +37,7 @@ class HomePage(BasePage):
 
         :param item_name: Name of the item
         """
-        item = next(item for item in self.locators['items'] if item['item_name'] == item_name)
-        self.click(item['remove_from_cart'])
+        self.click(self.get_locator('items', item_name, 'remove_from_cart'))
         self.logger.info(f"{item_name} removed from cart successfully")
 
     def is_item_in_cart(self, count: int) -> bool:
@@ -75,7 +70,7 @@ class HomePage(BasePage):
 
         :param sort_option: Sort option to choose
         """
-        self.click(self.locators['sort_list'][sort_option])
+        self.click(self.get_locator('sort_list', sort_option))
         self.logger.info(f"Items sorted: {sort_option}")
 
     def sort_order_text(self, sort_option: str) -> str:
@@ -85,13 +80,12 @@ class HomePage(BasePage):
         :param sort_option: Sort option to get the text of
         :return: The sort order text
         """
-        sort_order_text = self.get_element_text(self.locators['sort_list'][sort_option])
-        return sort_order_text
+        return self.get_element_text(self.get_locator('sort_list', sort_option))
 
     def logout(self):
         """
         Logs out the user from the application.
         """
-        self.click(self.locators['menu']['menu_button'])
-        self.click(self.locators['menu']['logout'])
+        self.click(self.get_locator('menu', 'menu_button'))
+        self.click(self.get_locator('menu', 'logout'))
         self.logger.info("Logged out successfully")

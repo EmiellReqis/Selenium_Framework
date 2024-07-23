@@ -1,6 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from src.pages.base_page import BasePage
-from src.utils.locator_loader import load_locators
 
 
 class LandingPage(BasePage):
@@ -13,8 +12,7 @@ class LandingPage(BasePage):
         :param site_name: Name of the site
         :param logger: Logger instance
         """
-        locators = load_locators(site_name, 'landing_page')['LandingPage']
-        super().__init__(driver, locators, logger)
+        super().__init__(driver, site_name, 'landing_page', logger)
         self.base_url = base_url
 
     def open(self):
@@ -30,6 +28,6 @@ class LandingPage(BasePage):
         """
         if 'home_button' in self.locators:
             self.logger.info("Navigating to home page")
-            self.click(self.locators['home_button'])
+            self.click(self.get_locator('home_button'))
         else:
             self.logger.info("Home button not found. Assuming already on home page.")
