@@ -12,7 +12,7 @@ def get_driver(browser="chrome"):
     """
     if browser == "chrome":
         options = Options()
-        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--ignore-certificate-errors, --disable-search-engine-choice-screen')
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
         driver = webdriver.Chrome(options=options)
     elif browser == "firefox":

@@ -51,18 +51,3 @@ def get_logger(test_suite_name, test_name, base_dir):
 
     return logger
 
-
-def capture_screenshot(driver, test_name, log_dir):
-    """
-    Capture a screenshot of the current state of the browser.
-
-    :param driver: WebDriver instance
-    :param test_name: Name of the test
-    :param log_dir: Directory to save the screenshot
-    :return: Path to the screenshot file
-    """
-    screenshot_dir = os.path.join(log_dir, 'screenshots')
-    os.makedirs(screenshot_dir, exist_ok=True)
-    screenshot_file = os.path.join(screenshot_dir, f"{test_name}.png")
-    driver.save_screenshot(screenshot_file)
-    return screenshot_file

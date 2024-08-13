@@ -2,7 +2,7 @@ import pytest
 import os
 from datetime import datetime
 from src.utils.driver_factory import get_driver
-from src.utils.logger import get_logger, capture_screenshot
+from src.utils.logger import get_logger
 
 
 @pytest.fixture(scope="class")
@@ -50,32 +50,3 @@ def driver():
     driver = get_driver()
     yield driver
     driver.quit()
-
-
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    """
-    Hook to modify the test report to capture the outcome of each test phase.
-
-    :param item: Test item
-    :param call: Call object
-    :yield: Test outcome
-    """
-    outcome = yield
-    report = outcome.get_result()
-    setattr(item, "rep_" + report.when, report)
-
-
-@pytest.fixture(scope="function", autouse=True)
-def screenshot_on_failure(request, driver):
-    """
-    Fixture to capture a screenshot on test failure.
-
-    :param request: Pytest request object
-    :param driver: WebDriver instance
-    :yield: None
-    """
-    yield
-    if request.node.rep_call.failed:
-        screenshot_path = capture_screenshot(driver, request.node.name, request.cls.test_class_dir)
-        request.node.screenshot_path = screenshot_path
